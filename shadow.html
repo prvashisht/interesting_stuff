@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <title>Shadow</title>
+    <style type="text/css">
+      @keyframes sunMovement {
+        from { -webkit-transform:rotate(0deg); }
+        to { -webkit-transform:rotate(360deg); }
+      }
+      @keyframes shadowChange {
+        0% {
+          text-shadow: -100px 100px 100px black;
+        }
+        50% {
+          text-shadow: 0 100px 0 black;
+        }
+        100% {
+          text-shadow: 100px 100px 100px black;
+        }
+      }
+      @keyframes backgroundChange {
+        0% {
+          background: black;
+        }
+        58% {
+          background: black;
+        }
+        62% {
+          background: red;
+        }
+        75% {
+          background: yellow;
+        }
+        88% {
+          background: orange;
+        }
+        92% {
+          background: black;
+        }
+        100% {
+          background: black;
+        }
+      }
+      .container {
+        width: 500px;
+        height: 500px;
+        border: 2px dashed #222;
+        padding: 10px;
+        position: relative;
+        animation: backgroundChange 20s linear infinite;
+      }
+      .sun {
+        border-radius: 50%;
+        position: absolute;
+        top: calc(50% + 75px);
+        left: calc(50% - 50px);
+        animation: sunMovement 20s linear infinite;
+      }
+      .sun::before {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: relative;
+        left: 350px;
+        background: yellow;
+        box-shadow: 1px 0px 35px 6px #9dad1b;
+      }
+      .umbrella {
+        position: absolute;
+        bottom: 60px;
+        left: 40%;
+        font-size: 150px;
+        text-shadow: 100px 100px 100px black;
+        background: -webkit-linear-gradient(right, #f00, #f003ff, #2700ff, #0ff, #00ff1f, #cf0, #ff2f00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shadowChange 10s linear infinite alternate;
+      }
+
+      .umbrella_shadow {
+        display: none;
+        position: absolute;
+        left: 70%;
+        top: 50%;
+        font-size: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sun"></div>
+
+      <div class="umbrella">&#9730;</div>
+      <div class="umbrella_shadow">&#9730;</div>
+    </div>
+  </body>
+</html>
